@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="/app.css" >
+
+    
+<%- include("partials/header.ejs") %>
+<div class="home">
+
+<h1>All Posts</h1>
+<button><a href="/new-post">Create New Post</a></button>
+
+<% if(response) { %>
+<% response.forEach( post => { %>
+<div class="post home">
+
+<a href="/post/<%= post._id %>" >
+<h4 class="'title">Title : <%= post.title %></h4>
+<h5>Body :  <%=post.body %> </h5>
+</a>
+
+</div>
+
+<% }) %>
+<% } %>
+
+</div>
+<%- include("partials/footer.ejs") %>

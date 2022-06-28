@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs") %>
+
+<% if(post) { %>
+
+<div class="single-post post">
+<h4>Title : <%= post.title %></h4>
+<h5>Body :  <%=post.body %> </h5>
+
+<div class="btn">
+<!-- <button><a class="edit" data-doc="<%= post._id %>">Edit</a></button> -->
+<button ><a href="/">Back</a></button>
+<button ><a class="delete" data-doc="<%= post._id %>">Delete</a></button>
+</div>
+
+</div>
+<script>
+    const del=document.querySelector('a.delete');
+
+    del.addEventListener('click',(e)=>{
+    const endpoint=`/post/${del.dataset.doc}`;
+     
+    fetch(endpoint,{
+        method : 'DELETE'
+    })
+    .then((response)=>response.json())
+    .then((data)=> window.location.href= data.redirect)
+    .catch(err=>console.log(err))
+    })
+
+    // const edit=document.querySelector('a.edit');
+
+    // edit.addEventListener('click',(e)=>{
+    // const endpoint=`/post/${del.dataset.doc}`;
+     
+    // fetch(endpoint,{
+    //     method : 'PATCH',
+    // })
+    // .then((response)=>response.json())
+    // .then((data)=> window.location.href= data.redirect)
+    // .catch(err=>console.log(err))
+    // })
+   
+</script>
+
+<% } %>
+<%- include("partials/footer.ejs") %>
