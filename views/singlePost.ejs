@@ -8,7 +8,7 @@
 
 <div class="btn">
 <!-- <button><a class="edit" data-doc="<%= post._id %>">Edit</a></button> -->
-<button ><a href="/">Back</a></button>
+<button ><a href="/blog/">Back</a></button>
 <button ><a class="delete" data-doc="<%= post._id %>">Delete</a></button>
 </div>
 
@@ -17,7 +17,7 @@
     const del=document.querySelector('a.delete');
 
     del.addEventListener('click',(e)=>{
-    const endpoint=`/post/${del.dataset.doc}`;
+    const endpoint=`/blog/post/${del.dataset.doc}`;
      
     fetch(endpoint,{
         method : 'DELETE'
